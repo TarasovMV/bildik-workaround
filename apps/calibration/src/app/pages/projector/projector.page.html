@@ -1,0 +1,15 @@
+<div class='tui-container tui-container_adaptive'>
+    <div class='tui-row tui-row_adaptive'>
+        <div class='tui-col tui-col_lg-12 tui-col_md-12 tui-col_xs-12'>
+            <div #container class='wrapper tui-space_top-8'>
+                <canvas *ngIf='drawSize' id="canvas" [width]="drawSize[0]" [height]="drawSize[1]"></canvas>
+                <div
+                    *ngFor='let c of coordinateService.coordinates$; let idx = index'
+                    [style.transform]='coordinateService.transform$(idx) | async'
+                    (tuiPan)='coordinateService.onPan(idx, $event)'
+                    class='point'
+                ></div>
+            </div>
+        </div>
+    </div>
+</div>

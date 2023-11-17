@@ -1,0 +1,20 @@
+<ng-container *ngIf='src'>
+    <div class='wrapper tui-space_top-6'>
+        <img [src]='src' alt='' (load)='imageLoad()' />
+        <canvas *ngIf='imageSize$ | async as imageSize' id="canvas" [width]="imageSize.draw[0]" [height]="imageSize.draw[1]"></canvas>
+        <div
+            *ngFor='let c of coordinateService.coordinates$; let idx = index'
+            [style.transform]='coordinateService.transform$(idx) | async'
+            (tuiPan)='coordinateService.onPan(idx, $event)'
+            class='point'
+        ></div>
+    </div>
+</ng-container>
+
+<div class='info tui-space_top-8' *ngIf='imageSize$ | async as size'>
+    <ng-container *ngFor='let coordinate$ of coordinateService.coordinates$; let idx = index'>
+        <div *tuiLet='coordinate$ | async as coordinate'>
+            Точка_{{idx + 1}}: [{{coordinate?.[0]}}, {{coordinate?.[1]}}] - [{{coordinate![0] * size.scale!}}, {{coordinate![1] * size.scale!}}]
+        </div>
+    </ng-container>
+</div>

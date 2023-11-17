@@ -1,0 +1,24 @@
+.wrapper {
+    display: flex;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: var(--tui-base-03);
+    border: solid 1px red;
+}
+
+.point {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+
+    &:after {
+        content: '';
+        display: block;
+        width: 10px;
+        height: 10px;
+        background: red;
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        cursor: pointer;
+    }
+}

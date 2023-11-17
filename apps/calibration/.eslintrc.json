@@ -13,7 +13,7 @@
           "error",
           {
             "type": "attribute",
-            "prefix": "bildik",
+            "prefix": "calibration",
             "style": "camelCase"
           }
         ],
@@ -21,7 +21,7 @@
           "error",
           {
             "type": "element",
-            "prefix": "bildik",
+            "prefix": "calibration",
             "style": "kebab-case"
           }
         ]
